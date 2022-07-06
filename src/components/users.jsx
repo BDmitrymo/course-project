@@ -5,7 +5,7 @@ const Users = () => {
     const [users, setUsers] = useState(API.users.fetchAll())
     const numberUsers = users.length
     const thsTable = ['Имя', 'Качества', 'Профессия', 'Встретился, раз', 'Оценка']
-    const isUsers = users.length > 0
+    const isUsers = numberUsers > 0
     const titleTable = {
         success: {title: 'человек тусуется с тобой сегодня', color: 'bg-primary'},
         danger: {title: 'Никто с тобой не тусанет', color: 'bg-danger'}
