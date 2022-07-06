@@ -3,9 +3,13 @@ import API from "../api";
 
 const Users = () => {
     const [users, setUsers] = useState(API.users.fetchAll())
-    const [numberUsers, setNumberUsers] = useState(users.length)
+    const numberUsers = users.length
     const thsTable = ['Имя', 'Качества', 'Профессия', 'Встретился, раз', 'Оценка']
-    const isUsers = numberUsers > 0
+    const isUsers = users.length > 0
+    const titleTable = {
+        success: {title: 'человек тусуется с тобой сегодня', color: 'bg-primary'},
+        danger: {title: 'Никто с тобой не тусанет', color: 'bg-danger'}
+    }
 
     const renderUserQualities = (qualities) => {
         return qualities.map(item => {
@@ -15,7 +19,6 @@ const Users = () => {
     }
     const handleDelete = (id) => {
         setUsers(prevState => prevState.filter(user => user._id !== id))
-        setNumberUsers(numberUsers - 1)
     }
     const renderUsers = () => {
         return (
@@ -35,16 +38,17 @@ const Users = () => {
             })
         )
     }
-    const renderNumberUsers = (data) => {
-        const classes = `d-inline-block ${data.color} m-3 p-3 h3 text-light`
-        return <span className={classes}>{numberUsers ? numberUsers : ''} {data.title}</span>
+    const renderNumberUsers = (key) => {
+        const {color, title} = titleTable[key]
+        const classes = `d-inline-block ${color} m-3 p-3 h3 text-light`
+        return <span className={classes}>{numberUsers ? numberUsers : ''} {title}</span>
     }
 
     return (
         isUsers
             ?
                 <>
-                    {renderNumberUsers({title: 'человек тусуется с тобой сегодня', color: 'bg-primary'})}
+                    {renderNumberUsers('success')}
                     <table className="table table-striped">
                         <thead>
                             <tr>
@@ -57,7 +61,7 @@ const Users = () => {
                         </tbody>
                     </table>
                 </>
-            : renderNumberUsers({title: 'Никто с тобой не тусанет', color: 'bg-danger'})
+            : renderNumberUsers('danger')
     )
 }
 
