@@ -18,7 +18,7 @@ const Users = () => {
         })
     }
     const handleDelete = (id) => {
-        setUsers(prevState => prevState.filter(user => user._id !== id))
+        setUsers(users.filter(user => user._id !== id))
     }
     const renderUsers = () => {
         return (
