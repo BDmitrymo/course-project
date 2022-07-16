@@ -6,9 +6,11 @@ import SearchStatus from "./components/searchStatus";
 const App = () => {
     const thsTable = ['Имя', 'Качества', 'Профессия', 'Встретился, раз', 'Оценка', 'Избранное']
     const [users, setUsers] = useState(API.users.fetchAll())
+
     const handleDelete = (id) => {
         setUsers(users.filter(user => user._id !== id))
     }
+
     const handleToggleBookmark = (id) => {
         const newUsers = users.map(user => {
             if (user._id === id) user.favourites = !user?.favourites
