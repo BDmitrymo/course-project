@@ -5,8 +5,11 @@ const SearchStatus = ({ length }) => {
         success: {title: 'человек тусуется с тобой сегодня', color: 'bg-primary'},
         danger: {title: 'Никто с тобой не тусанет', color: 'bg-danger'}
     }
-    const {color, title} = titleTable[key]
+    const isUsers = length > 0
+    const status = isUsers ? 'success' : 'danger'
+    const {color, title} = titleTable[status]
     const classes = `d-inline-block ${color} m-3 p-3 h3 text-light`
+
     return (
         <span className={classes}>{length ? length : ''} {title}</span>
     )
