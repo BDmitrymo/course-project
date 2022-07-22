@@ -4,7 +4,6 @@ import Users from "./components/users";
 import SearchStatus from "./components/searchStatus";
 
 const App = () => {
-    const thsTable = ['Имя', 'Качества', 'Профессия', 'Встретился, раз', 'Оценка', 'Избранное']
     const [users, setUsers] = useState(API.users.fetchAll())
 
     const handleDelete = (id) => {
@@ -22,19 +21,9 @@ const App = () => {
     return (
         <>
             {<SearchStatus length={users.length}/>}
-            <table className="table table-striped">
-                <thead>
-                <tr>
-                    {thsTable.map(th => <th scope="col" key={th}>{th}</th>)}
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {<Users users={users}
-                        handleDelete={handleDelete}
-                        handleToggleBookmark={handleToggleBookmark}/>}
-                </tbody>
-            </table>
+            {<Users users={users}
+                    handleDelete={handleDelete}
+                    handleToggleBookmark={handleToggleBookmark}/>}
         </>
     )
 }
