@@ -4,6 +4,7 @@ import Bookmark from "./bookmark";
 import PropTypes from "prop-types";
 
 const User = (props) => {
+    console.log(props?.favourites)
     return (
         <tr>
             <td>{props.name}</td>
@@ -42,9 +43,9 @@ User.propTypes = {
     completedMeetings: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired,
     handleToggleBookmark: PropTypes.func.isRequired,
-    favourites: PropTypes.bool.isRequired,
+    favourites: PropTypes.string,
     handleDelete: PropTypes.func.isRequired,
-    _id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
 }
 
 export default User;
