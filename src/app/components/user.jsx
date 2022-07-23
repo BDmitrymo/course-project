@@ -7,7 +7,7 @@ const User = (props) => {
         <tr>
             <td>{props.name}</td>
             <td>
-                {props.qualities.map(qual => (
+                {props.qualities.map((qual) => (
                     <Qualities key={qual._id} {...qual} />
                 ))}
             </td>
@@ -16,18 +16,22 @@ const User = (props) => {
             <td>{props.rate}/5</td>
             <td>
                 <button
-                    className='btn'
+                    className="btn"
                     onClick={() => props.handleToggleBookmark(props._id)}
-                ><Bookmark favourites={props?.favourites} /></button>
+                >
+                    <Bookmark favourites={props?.favourites} />
+                </button>
             </td>
             <td>
                 <button
-                    className='btn btn-sm btn-danger'
+                    className="btn btn-sm btn-danger"
                     onClick={() => props.handleDelete(props._id)}
-                >delete</button>
+                >
+                    delete
+                </button>
             </td>
         </tr>
-    )
-}
+    );
+};
 
-export default User
+export default User;
