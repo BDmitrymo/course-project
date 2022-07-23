@@ -11,6 +11,6 @@ const Bookmark = ({ favourites }) => {
 
 Bookmark.propTypes = {
     favourites: PropTypes.bool
-};
+}
 
 export default Bookmark;
